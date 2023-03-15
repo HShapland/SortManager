@@ -6,14 +6,21 @@
 
         public override int[] Sort(int[] array)
         {
-            int swaps = 0;
-            for (int i = 0; i < array.Length - 1; i++)
+            int temp = array[0];
+
+            for (int write = 0; write < array.Length; write++)
             {
-                if (array[i] <= array[i + 1]) continue;
-                (array[i], array[i + 1]) = (array[i + 1], array[i]);
-                swaps++;
+                for (int sort = 0; sort < array.Length - 1; sort++)
+                {
+                    if (array[sort] > array[sort + 1])
+                    {
+                        temp = array[sort + 1];
+                        array[sort + 1] = array[sort];
+                        array[sort] = temp;
+                    }
+                }
             }
-            if (swaps > 0) return Sort(array);
+
             return array;
         }
     }
