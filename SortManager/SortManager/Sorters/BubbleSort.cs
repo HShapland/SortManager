@@ -4,7 +4,7 @@
     {
         public override string Name => "BubbleSort";
 
-        public override void Sort()
+        public override void Sort(int[] array)
         {
             throw new NotImplementedException();
         }
