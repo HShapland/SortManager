@@ -1,4 +1,5 @@
-﻿using SortManager.Sorters;
+﻿using SortManager;
+using SortManager.Sorters;
 namespace SortManagerTests;
 
 public class BubbleSortTests
