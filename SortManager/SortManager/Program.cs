@@ -1,10 +1,11 @@
-﻿using System.Reflection.Metadata.Ecma335;
+﻿using System.Globalization;
+using System.Reflection.Metadata.Ecma335;
 using System.Threading;
 namespace SortManager;
 
 public class Program
 {
-    public static int maximum;
+    public static int maximum = 500;
     static void Main()
     {
         Title();
@@ -13,7 +14,7 @@ public class Program
         Sorter sorter = new Factory().CreateSorter(methodChoice);
 
         int length = TakeLengthChoice();
-        maximum = TakeMaxChoice();
+        if (methodChoice == "countsort") maximum = TakeMaxChoice();
 
         var watch = new System.Diagnostics.Stopwatch();
 
@@ -23,8 +24,9 @@ public class Program
         int[] sortedArray = methodChoice == "countsort" ? sorter.Sort(randomArray) : sorter.Sort(randomArray);
         watch.Stop();
 
-        WriteLine("Your Sorted Array:");
-        Console.WriteLine($"{String.Join(' ', sortedArray)} Sorted in: {watch.Elapsed.TotalMilliseconds} ms");
+        WriteLine($"Your Sorted Array Using {methodChoice}");
+        Console.WriteLine($"{String.Join(' ', sortedArray)}");
+        Console.WriteLine($"Sorted in: { watch.Elapsed.TotalMilliseconds}ms");
     }
 
     public static void WriteLine(string input)
@@ -41,9 +43,9 @@ public class Program
 
     static string TakeMethodChoice()
     {
-        string[] methods = { "1 Bubblesort", "2 Mergesort", "3 Insertionsort" };
+        string[] methods = { "1 Bubblesort", "2 Mergesort", "3 Insertionsort", "4 CombSort", "5 CountSort", "6 ShellSort" };
         WriteLine("Which Method");
-        foreach(string method in methods)
+        foreach (string method in methods)
         {
             WriteLine(method);
         }
@@ -57,33 +59,41 @@ public class Program
 
     public static bool CheckChoice(string choice)
     {
-        string[] choices = { "bubblesort", "mergesort", "insertionsort" };
+        string[] choices = { "bubblesort", "mergesort", "insertionsort", "combsort", "shellsort", "countsort" };
 
-        return choices.Contains(choice.ToLower());  
+        return choices.Contains(choice.ToLower());
     }
 
     static int TakeLengthChoice()
     {
         WriteLine("Enter array length:");
         string input = Console.ReadLine();
-        
-        if(Int32.TryParse(input, out int length)) return length;
-        if (length < 1)
+
+        if (Int32.TryParse(input, out int length))
         {
-            WriteLine("Must be greater than 0");
-            return TakeLengthChoice();
+            if (length < 1)
+            {
+                WriteLine("Must be greater than 0");
+                return TakeLengthChoice();
+            }
+            if (length > 10000)
+            {
+                WriteLine("Must be less than 1000");
+                return TakeLengthChoice();
+            }
+            return length;
         }
 
         WriteLine("Must be an integer");
         return TakeLengthChoice();
-        
+
     }
     static int TakeMaxChoice()
     {
         WriteLine("Enter maximum element size");
         string input = Console.ReadLine();
         if (Int32.TryParse(input, out int max) && max > 0) return max;
-        
+
 
         WriteLine("Must be a positive integer");
         return TakeMaxChoice();
@@ -92,11 +102,11 @@ public class Program
 
     public static int[] GenerateArray(int length, int max)
     {
-        int[] ints= new int[length];
+        int[] ints = new int[length];
         Random rand = new Random();
-        for(int i =0; i< length; i++)
-        {            
-            ints[i]= rand.Next(0, max);
+        for (int i = 0; i < length; i++)
+        {
+            ints[i] = rand.Next(1, max+1);
         }
         WriteLine("Your Random Array:");
         Console.WriteLine(String.Join(' ', ints));
