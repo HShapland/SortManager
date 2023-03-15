@@ -6,8 +6,8 @@ public class CountSort : Sorter
 
     public override int[] Sort(int[] array)
     {
-        int[] numCounts = new int[3];
-
+        int[] numCounts = new int[Program.maximum];
+        
         foreach (int i in array)
         {
             numCounts[i - 1]++;
