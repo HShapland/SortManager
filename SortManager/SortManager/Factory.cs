@@ -19,6 +19,8 @@ namespace SortManager
                     return new ShellSort();
                 case "countsort":
                     return new CountSort();
+                case "quicksort":
+                    return new QuickSort();
                 default:
                     break;
             }

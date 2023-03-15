@@ -43,7 +43,7 @@ public class Program
 
     static string TakeMethodChoice()
     {
-        string[] methods = { "1 Bubblesort", "2 Mergesort", "3 Insertionsort", "4 CombSort", "5 CountSort", "6 ShellSort" };
+        string[] methods = { "1 Bubblesort", "2 Mergesort", "3 Insertionsort", "4 CombSort", "5 CountSort", "6 ShellSort", "7 QuickSort" };
         WriteLine("Which Method");
         foreach (string method in methods)
         {
@@ -59,7 +59,7 @@ public class Program
 
     public static bool CheckChoice(string choice)
     {
-        string[] choices = { "bubblesort", "mergesort", "insertionsort", "combsort", "shellsort", "countsort" };
+        string[] choices = { "bubblesort", "mergesort", "insertionsort", "combsort", "shellsort", "countsort", "quicksort" };
 
         return choices.Contains(choice.ToLower());
     }
