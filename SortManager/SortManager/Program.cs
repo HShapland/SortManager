@@ -21,7 +21,8 @@ public class Program
         int[] sortedArray = sorter.Sort(randomArray);
         watch.Stop();
 
-        WriteLine(String.Join(' ', sortedArray));
+        WriteLine("Your Sorted Array:");
+        Console.WriteLine($"{String.Join(' ', sortedArray)} Sorted in: {watch.Elapsed.TotalMilliseconds} ms");
     }
 
     public static void WriteLine(string input)
@@ -30,7 +31,7 @@ public class Program
         foreach (char c in input)
         {
             Console.Write(c);
-            Thread.Sleep(50);
+            Thread.Sleep(10);
         }
         Console.WriteLine("");
     }
@@ -79,7 +80,8 @@ public class Program
         {
             ints[i]= rand.Next(0, 500);
         }
-        WriteLine(String.Join(' ', ints));
+        WriteLine("Your Random Array:");
+        Console.WriteLine(String.Join(' ', ints));
         return ints;
     }
     public static void Title()
