@@ -41,7 +41,11 @@ public class Program
 
     static string TakeMethodChoice()
     {
+<<<<<<< Updated upstream
         string[] methods = { "1 Bubblesort", "2 Mergesort", "3 Insertionsort" };
+=======
+        string[] methods = { "1 Bubblesort", "2 Mergesort", "3 Insertionsort", "4 CombSort", "5 CountSort", "6 ShellSort", "7 QuickSort" };
+>>>>>>> Stashed changes
         WriteLine("Which Method");
         foreach(string method in methods)
         {
@@ -57,7 +61,11 @@ public class Program
 
     public static bool CheckChoice(string choice)
     {
+<<<<<<< Updated upstream
         string[] choices = { "bubblesort", "mergesort", "insertionsort" };
+=======
+        string[] choices = { "bubblesort", "mergesort", "insertionsort", "combsort", "shellsort", "countsort", "quicksort" };
+>>>>>>> Stashed changes
 
         return choices.Contains(choice.ToLower());  
     }
