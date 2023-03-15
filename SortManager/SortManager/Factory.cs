@@ -1,4 +1,5 @@
-﻿namespace SortManager
+﻿using SortManager.Sorters;
+namespace SortManager
 {
     public class Factory
     {
