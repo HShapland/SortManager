@@ -4,6 +4,7 @@ namespace SortManager;
 
 public class Program
 {
+    static int maximum;
     static void Main()
     {
         Title();
@@ -12,14 +13,14 @@ public class Program
         Sorter sorter = new Factory().CreateSorter(methodChoice);
 
         int length = TakeLengthChoice();
-        int maximumNumber = TakeMaxChoice();
+        maximum = TakeMaxChoice();
 
         var watch = new System.Diagnostics.Stopwatch();
 
-        int[] randomArray = GenerateArray(length, maximumNumber);
+        int[] randomArray = GenerateArray(length, maximum);
 
         watch.Start();
-        int[] sortedArray = methodChoice == "countsort" ? sorter.Sort(randomArray, maximumNumber) : sorter.Sort(randomArray);
+        int[] sortedArray = methodChoice == "countsort" ? sorter.Sort(randomArray) : sorter.Sort(randomArray);
         watch.Stop();
 
         WriteLine("Your Sorted Array:");
