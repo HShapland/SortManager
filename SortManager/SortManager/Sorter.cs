@@ -3,6 +3,6 @@
     public abstract class Sorter
     {
         public abstract string Name { get; }
-        public abstract void Sort(int[] inputArray);
+        public abstract int[] Sort(int[] inputArray);
     }
 }
