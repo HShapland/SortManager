@@ -4,21 +4,23 @@ namespace SortManager;
 
 public class Program
 {
+    public static int maximum;
     static void Main()
     {
         Title();
-        string methodChoice = TakeMethodChoice();
+        string methodChoice = TakeMethodChoice().ToLower();
 
         Sorter sorter = new Factory().CreateSorter(methodChoice);
 
         int length = TakeLengthChoice();
+        maximum = TakeMaxChoice();
 
         var watch = new System.Diagnostics.Stopwatch();
 
-        int[] randomArray = GenerateArray(length);
+        int[] randomArray = GenerateArray(length, maximum);
 
         watch.Start();
-        int[] sortedArray = sorter.Sort(randomArray);
+        int[] sortedArray = methodChoice == "countsort" ? sorter.Sort(randomArray) : sorter.Sort(randomArray);
         watch.Stop();
 
         WriteLine("Your Sorted Array:");
@@ -39,7 +41,7 @@ public class Program
 
     static string TakeMethodChoice()
     {
-        string[] methods = { "1 Bubblesort", "2 Mergesort" };
+        string[] methods = { "1 Bubblesort", "2 Mergesort", "3 Insertionsort" };
         WriteLine("Which Method");
         foreach(string method in methods)
         {
@@ -55,7 +57,7 @@ public class Program
 
     public static bool CheckChoice(string choice)
     {
-        string[] choices = { "bubblesort", "mergesort" };
+        string[] choices = { "bubblesort", "mergesort", "insertionsort" };
 
         return choices.Contains(choice.ToLower());  
     }
@@ -66,19 +68,35 @@ public class Program
         string input = Console.ReadLine();
         
         if(Int32.TryParse(input, out int length)) return length;
+        if (length < 1)
+        {
+            WriteLine("Must be greater than 0");
+            return TakeLengthChoice();
+        }
 
         WriteLine("Must be an integer");
         return TakeLengthChoice();
         
     }
+    static int TakeMaxChoice()
+    {
+        WriteLine("Enter maximum element size");
+        string input = Console.ReadLine();
+        if (Int32.TryParse(input, out int max) && max > 0) return max;
+        
 
-    public static int[] GenerateArray(int length)
+        WriteLine("Must be a positive integer");
+        return TakeMaxChoice();
+
+    }
+
+    public static int[] GenerateArray(int length, int max)
     {
         int[] ints= new int[length];
         Random rand = new Random();
         for(int i =0; i< length; i++)
-        {
-            ints[i]= rand.Next(0, 500);
+        {            
+            ints[i]= rand.Next(0, max);
         }
         WriteLine("Your Random Array:");
         Console.WriteLine(String.Join(' ', ints));
