@@ -4,7 +4,7 @@ namespace SortManager;
 
 public class Program
 {
-    static int maximum;
+    public static int maximum;
     static void Main()
     {
         Title();
