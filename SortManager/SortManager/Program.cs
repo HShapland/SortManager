@@ -11,7 +11,6 @@ public class Program
         Title();
         string methodChoice = TakeMethodChoice().ToLower();
 
-        Sorter sorter = new Factory().CreateSorter(methodChoice);
 
         int length = TakeLengthChoice();
         if (methodChoice == "countsort") maximum = TakeMaxChoice();
@@ -20,8 +19,9 @@ public class Program
 
         int[] randomArray = GenerateArray(length, maximum);
 
+        Sorter sorter = new Factory().CreateSorter(methodChoice);
         watch.Start();
-        int[] sortedArray = methodChoice == "countsort" ? sorter.Sort(randomArray) : sorter.Sort(randomArray);
+        int[] sortedArray = sorter.Sort(randomArray);
         watch.Stop();
 
         WriteLine($"Your Sorted Array Using {methodChoice}");
@@ -43,7 +43,7 @@ public class Program
 
     static string TakeMethodChoice()
     {
-        string[] methods = { "1 Bubblesort", "2 Mergesort", "3 Insertionsort", "4 CombSort", "5 CountSort", "6 ShellSort", "7 QuickSort" };
+        string[] methods = { " - Bubblesort", " - Mergesort", " - Insertionsort", " - CombSort", " - CountSort", " - ShellSort", " - QuickSort" };
         WriteLine("Which Method");
         foreach (string method in methods)
         {
