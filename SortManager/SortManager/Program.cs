@@ -7,18 +7,19 @@ public class Program
     static void Main()
     {
         Title();
-        string methodChoice = TakeMethodChoice();
+        string methodChoice = TakeMethodChoice().ToLower();
 
         Sorter sorter = new Factory().CreateSorter(methodChoice);
 
         int length = TakeLengthChoice();
+        int maximumNumber = TakeMaxChoice();
 
         var watch = new System.Diagnostics.Stopwatch();
 
-        int[] randomArray = GenerateArray(length);
+        int[] randomArray = GenerateArray(length, maximumNumber);
 
         watch.Start();
-        int[] sortedArray = sorter.Sort(randomArray);
+        int[] sortedArray = methodChoice == "countsort" ? sorter.Sort(randomArray, maximumNumber) : sorter.Sort(randomArray);
         watch.Stop();
 
         WriteLine("Your Sorted Array:");
@@ -76,14 +77,25 @@ public class Program
         return TakeLengthChoice();
         
     }
+    static int TakeMaxChoice()
+    {
+        WriteLine("Enter maximum element size");
+        string input = Console.ReadLine();
+        if (Int32.TryParse(input, out int max) && max > 0) return max;
+        
 
-    public static int[] GenerateArray(int length)
+        WriteLine("Must be a positive integer");
+        return TakeMaxChoice();
+
+    }
+
+    public static int[] GenerateArray(int length, int max)
     {
         int[] ints= new int[length];
         Random rand = new Random();
         for(int i =0; i< length; i++)
-        {
-            ints[i]= rand.Next(0, 500);
+        {            
+            ints[i]= rand.Next(0, max);
         }
         WriteLine("Your Random Array:");
         Console.WriteLine(String.Join(' ', ints));

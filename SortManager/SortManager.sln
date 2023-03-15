@@ -5,7 +5,7 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SortManager", "SortManager\SortManager.csproj", "{C1D1EAFD-6771-4598-B2D8-89B43D728B9F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SortManagerTests", "SortManagerTests\SortManagerTests.csproj", "{516207AD-D144-4975-9B12-1A834D87028D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SortManagerTests", "SortManagerTests\SortManagerTests.csproj", "{AD3AA33B-8636-4885-ACDD-DDE1CDB02A11}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{C1D1EAFD-6771-4598-B2D8-89B43D728B9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1D1EAFD-6771-4598-B2D8-89B43D728B9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1D1EAFD-6771-4598-B2D8-89B43D728B9F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{516207AD-D144-4975-9B12-1A834D87028D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{516207AD-D144-4975-9B12-1A834D87028D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{516207AD-D144-4975-9B12-1A834D87028D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{516207AD-D144-4975-9B12-1A834D87028D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD3AA33B-8636-4885-ACDD-DDE1CDB02A11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD3AA33B-8636-4885-ACDD-DDE1CDB02A11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD3AA33B-8636-4885-ACDD-DDE1CDB02A11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD3AA33B-8636-4885-ACDD-DDE1CDB02A11}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
