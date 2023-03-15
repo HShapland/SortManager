@@ -16,6 +16,6 @@ public class ProgramTests
     [TestCase(10)]
     public void GivenLength_GenerateArray_ReturnsArrayOfSpecifiedLength(int input)
     {
-        Assert.That(Program.GenerateArray(input), Has.Length.EqualTo(input));
+        Assert.That(Program.GenerateArray(input, 10), Has.Length.EqualTo(input));
     }
 }
