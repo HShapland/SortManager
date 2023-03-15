@@ -39,7 +39,7 @@ public class Program
 
     static string TakeMethodChoice()
     {
-        string[] methods = { "1 Bubblesort", "2 Mergesort" };
+        string[] methods = { "1 Bubblesort", "2 Mergesort", "3 Insertionsort" };
         WriteLine("Which Method");
         foreach(string method in methods)
         {
@@ -55,7 +55,7 @@ public class Program
 
     public static bool CheckChoice(string choice)
     {
-        string[] choices = { "bubblesort", "mergesort" };
+        string[] choices = { "bubblesort", "mergesort", "insertionsort" };
 
         return choices.Contains(choice.ToLower());  
     }
@@ -66,6 +66,11 @@ public class Program
         string input = Console.ReadLine();
         
         if(Int32.TryParse(input, out int length)) return length;
+        if (length < 1)
+        {
+            WriteLine("Must be greater than 0");
+            return TakeLengthChoice();
+        }
 
         WriteLine("Must be an integer");
         return TakeLengthChoice();
