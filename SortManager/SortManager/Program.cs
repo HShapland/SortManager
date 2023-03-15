@@ -2,7 +2,7 @@
 using System.Threading;
 namespace SortManager;
 
-internal class Program
+public class Program
 {
     static void Main()
     {
@@ -21,7 +21,7 @@ internal class Program
         int[] sortedArray = sorter.Sort(randomArray);
         watch.Stop();
 
-
+        WriteLine(String.Join(' ', sortedArray));
     }
 
     public static void WriteLine(string input)
@@ -34,6 +34,7 @@ internal class Program
         }
         Console.WriteLine("");
     }
+
 
     static string TakeMethodChoice()
     {
@@ -51,7 +52,7 @@ internal class Program
         return TakeMethodChoice();
     }
 
-    static bool CheckChoice(string choice)
+    public static bool CheckChoice(string choice)
     {
         string[] choices = { "bubblesort", "mergesort" };
 
@@ -70,13 +71,13 @@ internal class Program
         
     }
 
-    static int[] GenerateArray(int length)
+    public static int[] GenerateArray(int length)
     {
         int[] ints= new int[length];
         Random rand = new Random();
         for(int i =0; i< length; i++)
         {
-            ints[i]= rand.Next();
+            ints[i]= rand.Next(0, 500);
         }
         WriteLine(String.Join(' ', ints));
         return ints;
@@ -91,7 +92,7 @@ internal class Program
             else if (i == 3) Console.ForegroundColor = ConsoleColor.Blue;
             else if (i == 4) Console.ForegroundColor = ConsoleColor.Gray; Console.Write(@"             
   /$$$$$$                                                /$$$$$$                        /$$                        
-/$$__  $$                                              /$$__  $$                      | $$                        
+ /$$__  $$                                              /$$__  $$                      | $$                        
 | $$  \ $$  /$$$$$$   /$$$$$$  /$$$$$$  /$$   /$$      | $$  \__/  /$$$$$$   /$$$$$$  /$$$$$$    /$$$$$$   /$$$$$$ 
 | $$$$$$$$ /$$__  $$ /$$__  $$|____  $$| $$  | $$      |  $$$$$$  /$$__  $$ /$$__  $$|_  $$_/   /$$__  $$ /$$__  $$
 | $$__  $$| $$  \__/| $$  \__/ /$$$$$$$| $$  | $$       \____  $$| $$  \ $$| $$  \__/  | $$    | $$$$$$$$| $$  \__/
